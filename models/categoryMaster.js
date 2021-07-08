@@ -2,9 +2,18 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 const categoryMasterSchema=new Schema({
-   category:{
-       type:Object
-   }
+    productData:{
+        category:String,
+        subCategoryData:{
+            
+            subCategoryAndFeature:{
+                
+                name:String,
+                features:Array
+            }
+        },
+        
+    }
 });
 
 module.exports=mongoose.model('CategoryMaster',categoryMasterSchema);

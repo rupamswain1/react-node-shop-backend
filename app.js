@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express();
 const mongoose=require('mongoose');
-const bodyParser=require('body-parser');
+const cors=require('cors');
 const Master=require('./models/masterData')
 
 //router imports
@@ -10,6 +10,15 @@ const sellerRoutes=require('./routes/sellerRoutes')
 //body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+app.use(cors());
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods', "OPTIONS,GET,POST,PUT,PATCH,DELETE");
+    res.setHeader('Access-Control-Allow-Headers','Content-Type,Authorization');
+    next();
+})
+
 app.use('/seller',sellerRoutes);
 
 app.use((error,req,res,next)=>{

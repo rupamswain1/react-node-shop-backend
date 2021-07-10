@@ -49,7 +49,6 @@ const SellerSchema=new Schema({
                 type:Schema.Types.ObjectId,
                 sellingPrice:{
                     type:Number,
-                    required:true,
                 },
                 soldOn:{
                     type:Number,
@@ -65,3 +64,5 @@ const SellerSchema=new Schema({
     }
 
 })
+
+module.exports=mongoose.model('Seller',SellerSchema);

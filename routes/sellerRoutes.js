@@ -67,8 +67,7 @@ router.post('/signup',
 ,sellerAuth.signUp);
 
 router.post('/login',[
-    body('email').isEmail().withMessage('Please enter a valid email id'),
-    
+    body('email').isEmail().withMessage('Please enter a valid email id')
 ],sellerAuth.login)
 
 module.exports=router;

@@ -72,7 +72,7 @@ exports.login=(req,res,next)=>{
     const email=req.body.email;
     const password=req.body.password;
     let jsonResponse={};
-    Seller.findOne({email:email}).select('name password')
+    Seller.findOne({email:email}).select('name password verification')
     .then(user=>{
         if(!user){
             const error=new Error(validationFailedText);
@@ -80,6 +80,7 @@ exports.login=(req,res,next)=>{
             throw error;
         }
         jsonResponse.name=user.name;
+        jsonResponse.verification=user.verification;
         var token=jwt.sign({_id:user._id},process.env.SECRET_CODE,{expiresIn:'1h'})
         jsonResponse.token=token
         return bcrypt.compare(password,user.password)

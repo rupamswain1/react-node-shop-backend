@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const mongoose=require('mongoose');
 const cors=require('cors');
-const Master=require('./models/masterData')
+const CategoryMaster=require('./models/categoryMaster')
 
 //router imports
 const sellerRoutes=require('./routes/sellerRoutes')
@@ -30,18 +30,19 @@ app.use((error,req,res,next)=>{
 })
 mongoose.connect('mongodb+srv://rupam123:rupam123@nodecluster.plaky.mongodb.net/React-Node-Ecomm?retryWrites=true&w=majority')
 .then(result=>{
-    // new Master({productData:{category:"Appliances",
-    // subCategoryData:{
-    //     subCategoryAndFeature:{
+    // new CategoryMaster({productData:{category:"Appliances",
+    // subCategoryData:[
+    //     {
     //         name:'AC',
     //         features:['capacity','power consumption']
     //     },
-    //     subCategoryAndFeature:{
+    //     {
     //         name:'coolers',
     //         features:['fan type','liters']
     //     }
         
-    // }}}).save();
+    // ]}}).save();
+
     app.listen(8000,()=>{
 
         console.log("listning")

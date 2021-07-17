@@ -22,8 +22,8 @@ const productMasterSchema= new Schema({
         type:Date,
         default:Date.now
     },
-    sellers:{
-        seller:{
+    sellers:[
+        {
             sellerId:{
                 type:Schema.Types.ObjectId,
                 required:true,
@@ -38,7 +38,7 @@ const productMasterSchema= new Schema({
                 required:true
             }
         //complete this
-    }},
+    }],
     manufacturer:{
         type:String,
         required:true
@@ -68,12 +68,12 @@ const productMasterSchema= new Schema({
         type:String,
         required:true
     },
-    productFeatures:{
-        feature:{
-            name:String,
+    productFeatures:[
+        {
+            featureName:String,
             value:any,
         }
-    }
+    ]
 
 });
 module.exports=mongoose.model('ProductMaster',productMasterSchema);

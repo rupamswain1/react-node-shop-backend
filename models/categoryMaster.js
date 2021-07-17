@@ -4,14 +4,14 @@ const Schema=mongoose.Schema;
 const categoryMasterSchema=new Schema({
     productData:{
         category:String,
-        subCategoryData:{
+        subCategoryData:[
             
-            subCategoryAndFeature:{
-                
+            {
                 name:String,
-                features:Array
+                features:[],
+                manufacturers:[],
             }
-        },
+        ],
         
     }
 });

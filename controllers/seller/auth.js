@@ -2,6 +2,7 @@ const bcrypt=require('bcryptjs');
 const Seller=require('../../models/seller');
 const {validationResult}=require('express-validator');
 const jwt=require('jsonwebtoken');
+const Product=require('../../models/productMaster')
 require('dotenv').config()
 exports.signUp=(req,res,next)=>{
     const errors=validationResult(req);
@@ -101,4 +102,34 @@ exports.login=(req,res,next)=>{
         }
         next(err);
     })
+}
+
+exports.flood=(req,res,next)=>{
+    const data={
+        category:"Electronics",
+        subCategory:"Mobile",
+        price:15999,
+        quantitySold:0,
+        sellers:[
+            {
+                sellerId:'60ef2be32f2e841d737242e3',
+                quantityAvailable:100,
+                sellingPrice:9999
+            }
+        ],
+        manufacturer:"Samsung",
+        model:"M31",
+        about:"This is a samsung mobile",
+        ratings:[4,4.5,3],
+        countryOfOrigin:"India",
+        productFeatures:[{featureName:"Battery",value:"10000mAh"},{featureName:"screen Size",value:"15 inch"}]
+    };
+    const arr=[];
+    for(let a=0;a<50000;a++){
+        arr.push(data);
+    }
+    Product.insertMany(arr).then(result=>{
+    res.status(200).json({status:"Done"});
+    }).catch(err=>console.log(err));
+    
 }

@@ -50,9 +50,8 @@ const productMasterSchema= new Schema({
         type:String,
         required:true
     },
-    ratings:{
-        type:Array,
-    },
+    ratings:[],
+       
     comments:{
         comment:{
             customerId:{
@@ -71,7 +70,7 @@ const productMasterSchema= new Schema({
     productFeatures:[
         {
             featureName:String,
-            value:any,
+            value:String,
         }
     ]
 

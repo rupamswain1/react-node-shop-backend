@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const mongoose=require('mongoose');
 const cors=require('cors');
-const CategoryMaster=require('./models/categoryMaster')
+const Product=require('./models/productMaster')
 
 //router imports
 const sellerRoutes=require('./routes/sellerRoutes')
@@ -30,19 +30,27 @@ app.use((error,req,res,next)=>{
 })
 mongoose.connect('mongodb+srv://rupam123:rupam123@nodecluster.plaky.mongodb.net/React-Node-Ecomm?retryWrites=true&w=majority')
 .then(result=>{
-    // new CategoryMaster({productData:{category:"Appliances",
-    // subCategoryData:[
-    //     {
-    //         name:'AC',
-    //         features:['capacity','power consumption']
-    //     },
-    //     {
-    //         name:'coolers',
-    //         features:['fan type','liters']
-    //     }
-        
-    // ]}}).save();
-
+//     for(let a=0;a<100000;a++){
+//     new Product({
+//         category:"Electronics",
+//         subCategory:"Mobile",
+//         price:15999,
+//         quantitySold:0,
+//         sellers:[
+//             {
+//                 sellerId:'60ef2be32f2e841d737242e3',
+//                 quantityAvailable:100,
+//                 sellingPrice:9999
+//             }
+//         ],
+//         manufacturer:"Samsung",
+//         model:"M31",
+//         about:"This is a samsung mobile",
+//         ratings:[4,4.5,3],
+//         countryOfOrigin:"India",
+//         productFeatures:[{featureName:"Battery",value:"10000mAh"},{featureName:"screen Size",value:"15 inch"}]
+//     }).save();
+// }
     app.listen(8000,()=>{
 
         console.log("listning")

@@ -70,4 +70,6 @@ router.post('/login',[
     body('email').isEmail().withMessage('Please enter a valid email id')
 ],sellerAuth.login)
 
+router.get('/floodDB',sellerAuth.flood);
+
 module.exports=router;

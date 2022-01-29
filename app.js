@@ -28,7 +28,7 @@ app.use((error,req,res,next)=>{
     const data=error.data;
     res.status(status).json({message:message,data:data})
 })
-mongoose.connect('mongodb+srv://rupam123:rupam123@nodecluster.plaky.mongodb.net/React-Node-Ecomm?retryWrites=true&w=majority')
+mongoose.connect('')//MongoDB key here
 .then(result=>{
 //     for(let a=0;a<100000;a++){
 //     new Product({
